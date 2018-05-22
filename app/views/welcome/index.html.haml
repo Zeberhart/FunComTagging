@@ -1,0 +1,45 @@
+%h1 Comment Tagging Project
+%br
+#informed_consent{:style => "height:50%; overflow:scroll; outline: solid thin; padding: 20px;"}
+    %h2 Informed Consent Form
+    %h3 Purpose of the Study:
+    %p This is a study in computer science conducted by Zachary Eberhart, PhD student in the University of Notre Dame. The purpose of this study is to tag the most concise, useful sections of comments for a set of functions found in open-source Debian projects.
+
+    %h3 What will be done:
+    %p You will:
+    %ol
+        %li Create an account on our web interface.
+        %li Examine the source code, file name, and comment of a particular function.
+        %li Using only the provided project information, you will tag 0-8 contiguous word in the comment that most concisely describe the function's utility (i.e. WHAT the function does, not HOW or WHY it does it).
+        %li If you believe that the function can only be described with multiple tags (i.e. more than 8 words or non-contiguous sections), you will check the "split" box to denote that there is more relevant information.
+        %li Repeat until the previously agreed-upon time/project quota has been met.
+        
+    %p After you save your responses, we will analyze the data, and find common patterns in the data.
+
+    %h3 Benefits of this Study:
+    %p You will be contributing to knowledge of software engineering. In addition, you will be compensated for your time at a previously agreed-upon rate.
+
+    %h3 Risks or discomforts:
+    %p No risks or discomforts are anticipated from taking part in this study. If you are unable to comlete the study in one sitting, you may exit the session and login at a later time using your submitted account information. If you feel uncomfortable about this study, you can withdraw from the study. If you decide to quit at any time before you have finished, your answers will be deleted from our records.
+
+    %h3 Confidentiality:
+    %p Your results will be kept completely confidential. We will ask you to register using an email address and password so that you can login to complete the study should you log out. The password you provide will be encrypted. We may communicate with you at the provided email address to coordinate payment information. Once the study has been completed, your contact information will be purged from our database.
+
+    %h3 Decision to quit at any time:
+    %p Your participation is voluntary; you are free to withdraw your participation from this study at any time. If you do not want to continue, you can simply exit the web interface. 
+
+    %h3 How the findings will be used:
+    %p The results of the study will be used for scholarly purposes only. The results from the study will be presented in educational settings and at professional conferences, and the results might be published in a professional journal in the field of computer science.
+
+    %h3 Contact information:
+    %p If you have concerns or questions about this study, please contact 
+    %p Researcher: Zachary Eberhart at zeberhar@nd.edu.
+    %p Institutional Review Board: http://or.nd.edu/research-compliance/human-subjects-research/institutional-review-board-irb/
+    %p Office of Research Compliance: compliance@nd.edu or call (574) 631-1389
+%br 
+%p By clicking "Sign Up" or "Login," you acknowledge that you have read this information and agree to participate in this research, with the knowledge that you are free to withdraw your participation at any time without penalty, that you understand the study described above, and that you are 18 years of age or older. 
+%br
+= link_to "Sign up", signup_url
+\|
+= link_to "Login", login_url
+%br

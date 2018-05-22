@@ -1,0 +1,52 @@
+#content
+    %br
+    #navigation
+        .left{:style => "float:left"}
+            -if params[:id].to_i > 1
+                = link_to 'Prev', prev_comment
+            -else
+                Prev
+            \|
+            -if params[:id].to_i != @user.current_comment_id and params[:id].to_i != Comment.count
+                = link_to 'Next', next_comment
+            -else
+                Next
+        .right{:style => "float:right"}
+            = link_to "Log out", logout_url, method: :delete
+        .center{:style => "text-align: center; width:30%; margin:auto;"}
+            / Comment #{@project_number}/#{Comment.all.count}
+            Comment #{params[:id]}/#{Comment.count} (##{@comment.id})
+    %br
+    %hr
+    -if @user.current_comment_id.to_i == Comment.all.count+1
+        %h2{:style => "text-align: center; font-size: 2.7em; line-height: 1.5em;"} You have successfully completed tagging all of the comments! Thank you for your contribution.
+        %hr
+    #instructions
+        Spend a moment reading through the function and the comment. Then, highlight the 0-8 words in the comment that most usefully describe the function's purpose . If you believe there is more useful information than one tag can hold, check the "split" box. Once you have finished, click submit or press enter to continue.
+        =link_to "View Demo", tutorial_url
+    %hr
+    %table#main_content
+        %tr
+            %td.content_item
+                %h2{:style => "line-height:0em;"} Function
+                %p (Found in the file #{@comment.file_name}.)
+                
+                #function
+                    =@comment.function_body
+                    \#Functionunctionfdsfads fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd asbfhjk bsdakjfhd sajbkf dsjkafb dsjakb
+                    tionfdsfads fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd a
+                    tionfdsfads fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd a
+                    tionfdsfads fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd a
+            %td.content_item
+                %h2 Comment
+                #comment
+                    &#8203;#{@comment.body}
+                    \#Functionunctionfdsfads     fdsfdfdfdsfdsafds.    afdsa    fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb.   djkshaf    djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd asbfhjk bsdakjfhd sajbkf dsjkafb dsjakb fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd asbfhjk bsdakjf fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd asbfhjk bsdakjf fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd asbfhjk bsdakjf
+                %br
+                You have selected:
+                #confirmation= @tag.body if @tag
+    
+    = form_tag 
+    = hidden_field_tag :tag
+    .right{:style => "float:right; display: block;"}
+        = submit_tag "Submit", :id => "submit"

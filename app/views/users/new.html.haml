@@ -1,0 +1,10 @@
+=link_to "Back", root_path
+%br
+= form_for :user, :url => signup_path do |f|
+	= f.label :email
+	= f.text_field :email
+	= f.label :password
+	= f.password_field :password
+	= f.label :password_confirmation, "Confirm Password"
+	= f.password_field :password_confirmation
+	= submit_tag "Submit"

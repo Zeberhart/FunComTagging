@@ -1,0 +1,96 @@
+html{
+    height: 100%;
+    padding:0;
+    margin: 0;
+}
+
+.flash{
+	padding:10px;
+	color:white;
+	text-align:center;
+	width:50%;
+	margin:auto;
+}
+
+.notice{
+	background-color: #12Db55;
+}
+
+.alert{
+	background-color: #dd5412;
+}
+
+body{
+	height:90%;
+	background-color: #f7f7f7 !important;
+}
+
+#content{
+	height:100%;
+	margin: 0px 50px 0px 50px;
+}
+
+#navigation{
+	font-size:1.3em;
+}
+
+#instructions{
+	text-align:center;
+}
+
+#main_content{
+	width:100%;
+	height:70%;
+	overflow:scroll; 
+}
+
+.content_item{
+	width:50%;
+	vertical-align: top;
+	padding:10px;
+}
+
+#function{
+	font-family: "Courier";
+	font-size: 1.3em;
+	line-height:1.3;
+	height:100%;
+	overflow:scroll; 
+}
+
+#comment{
+	background-color: #ffffff;
+	padding :10px;
+	border: 2px solid #ffd487;
+    border-radius: 5px;
+	word-spacing: 3px;
+	font-family: "Arial";
+	font-size: 1.7em;
+	line-height:1.3;
+	max-height:70%;
+	overflow:scroll; 
+}
+
+#comment::selection {
+  background: #ffd7a9; /* WebKit/Blink Browsers */
+}
+#comment::-moz-selection {
+  background: #fef080; /* Gecko Browsers */
+}
+
+#confirmation{
+	color: #EE7600;
+	font-size: 1.3em;
+}
+
+#submit{
+	font-size: 1.7em;
+	width:10em;
+    height:2em;
+    border:2px solid #ccc;
+    cursor:pointer;
+}
+
+#submit:hover{
+	background-color: #ddeeff;
+}
