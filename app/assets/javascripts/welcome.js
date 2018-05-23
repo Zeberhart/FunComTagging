@@ -31,7 +31,7 @@ function expand(range) {
     range.setEnd(range.endContainer, range.endOffset - 1);
 }
 
-function mouseUp() {
+function mouseUpW() {
 	var selection = getSelected()
     if(selection && selection.toString().length>0){
         selectionRange = selection.getRangeAt(0);
@@ -88,7 +88,7 @@ function otherMouseUp() {
 
 $(document).on('turbolinks:load', function() {
     $("#commentW").on("mouseup", function(){
-        mouseUp();
+        mouseUpW();
     });
     $(".comment").on("mouseup", function(){
         otherMouseUp();
