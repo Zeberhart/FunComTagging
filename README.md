@@ -7,7 +7,7 @@ Ruby on Rails supports the Model-View-Controller pattern - that is, if you want 
 *Get started*
 
 To run locally, you must go to the FunCom root folder and run `bundle install` – this will install and link all the dependencies. 
-Run `rake db:reset` to make sure the database is setup and seeded
+Run `rake db:reset` to make sure the database is setup and seeded. 
 In a seperate terminal, run `rails s` to host the site locally. Navigate to http://localhost:3000/ in your browser to view it and confirm that everything is working
 
 *Deployment*

@@ -24,28 +24,23 @@ class CommentsController < ApplicationController
 
   # POST /comments
   # POST /comments.json
+  #NOTE- Not used in this implementation.
   def create
-    @comment = Comment.new(comment_params)
+    # @comment = Comment.new(comment_params)
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @comment.save
+    #     format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+    #     format.json { render :show, status: :created, location: @comment }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @comment.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
+  # POST /comments/id
   def tag
-    #Enforce length, etc.
-    # params[:secondary_labels].each do |label|
-    #   if label == params[:primary_label]
-    #     return redirect_to @project, alert: "The primary label may not also be chosen as a secondary label."
-    #   end
-    # end unless params[:secondary_labels].nil?
-    
     #Create or update tag
     @tag = Tag.where(user_id: session[:user_id], comment_id: @comment.id).first
     if @tag.nil?
@@ -53,9 +48,11 @@ class CommentsController < ApplicationController
         t.user_id = session[:user_id]
         t.comment_id = @comment.id
         t.body = params[:tag]
+        t.split = params[:split] ? true : false
       end
     else
       @tag.body = params[:tag]
+      @tag.split = params[:split] ? true : false
     end
 
     #Save tag 
@@ -67,8 +64,11 @@ class CommentsController < ApplicationController
     end
   end
 
+
+
   private
 
+    # set user variable using session parameters
     def set_user
       if !session[:user_id]
         redirect_to root_path

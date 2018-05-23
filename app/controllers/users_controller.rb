@@ -3,25 +3,26 @@ class UsersController < ApplicationController
 
   # GET /users
   # GET /users.json
+  # NOTE currently unimplemented
   def index
     @users = User.all
   end
 
   # GET /users/1
   # GET /users/1.json
+  # NOTE currently unimplemented
   def show
   end
 
-  # GET /users/new
+  # GET /signup
   def new
-    if session[:user_id]
-        @user = current_user
+    @user = current_user
+    if @user 
         redirect_to current_comment
     end
   end
 
-  # POST /users
-  # POST /users.json
+  # POST /signup
   def create
     @user = User.new(user_params)
 

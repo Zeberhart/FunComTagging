@@ -22,31 +22,27 @@
         %h2{:style => "text-align: center; font-size: 2.7em; line-height: 1.5em;"} You have successfully completed tagging all of the comments! Thank you for your contribution.
         %hr
     #instructions
-        Spend a moment reading through the function and the comment. Then, highlight the 0-8 words in the comment that most usefully describe the function's purpose . If you believe there is more useful information than one tag can hold, check the "split" box. Once you have finished, click submit or press enter to continue.
+        Spend a moment reading through the function and the comment. Then, highlight the 0-8 words in the comment that most usefully describe the function's purpose . If you believe there is more useful information than one tag can hold, choose the most appropriate tag and check the "Multiple Tags?" box. Once you have finished, click submit or press enter to continue.
         =link_to "View Demo", tutorial_url
     %hr
     %table#main_content
         %tr
             %td.content_item
                 %h2{:style => "line-height:0em;"} Function
-                %p (Found in the file #{@comment.file_name}.)
-                
-                #function
-                    =@comment.function_body
-                    \#Functionunctionfdsfads fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd asbfhjk bsdakjfhd sajbkf dsjkafb dsjakb
-                    tionfdsfads fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd a
-                    tionfdsfads fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd a
-                    tionfdsfads fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd a
+                %p (Found in the file #{@comment.file_name})
+                #function=  @comment.function_body.gsub('\n', "\n")
+                    
             %td.content_item
                 %h2 Comment
-                #comment
-                    &#8203;#{@comment.body}
-                    \#Functionunctionfdsfads     fdsfdfdfdsfdsafds.    afdsa    fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb.   djkshaf    djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd asbfhjk bsdakjfhd sajbkf dsjkafb dsjakb fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd asbfhjk bsdakjf fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd asbfhjk bsdakjf fdsfdfdfdsfdsafds afdsa fdsanjfds kafndjk fndjsakbfdjkhsa bfjdkhs abfjhd sbafhjd sbajkfhd sajkfb dsjkahfb djkshaf djhksab fjdhksab fhjkds abfjkhdsa bfjkhdsab fjkhd asbjkfd sabfjk dasbjfhd asbfhjk bsdakjf
+                #comment &#8203;#{@comment.body.gsub('\n', "\n").gsub('\t', '').gsub('*', "")[2..-3].squeeze(" ")}
                 %br
                 You have selected:
                 #confirmation= @tag.body if @tag
-    
-    = form_tag 
-    = hidden_field_tag :tag
-    .right{:style => "float:right; display: block;"}
-        = submit_tag "Submit", :id => "submit"
+                = form_tag 
+                = hidden_field_tag :tag
+                .left{:style => "float:left"}
+                    =label_tag "split", "Multiple Tags?" do
+                        =check_box_tag "split", true, (@tag.split if @tag)
+                        Multiple Tags?
+                .right{:style => "float:right; display: block;"}
+                    = submit_tag "Submit", :id => "submit"

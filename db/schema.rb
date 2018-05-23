@@ -14,9 +14,7 @@ ActiveRecord::Schema.define(version: 20180521200430) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
-    t.integer "c_id"
     t.integer "function_id"
-    t.string "function_name"
     t.string "function_body"
     t.string "file_name"
     t.datetime "created_at", null: false
