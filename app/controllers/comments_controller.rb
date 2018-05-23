@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :tag]
   before_action :set_user, only: [:show, :tag]
+  before_action :set_comment, only: [:show, :tag]
+  
 
   # GET /comments
   # GET /comments.json
