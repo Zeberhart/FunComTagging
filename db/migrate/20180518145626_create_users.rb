@@ -3,8 +3,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
     create_table :users do |t|
       t.text :email
       t.string :password_digest
-      t.text :current_comment_id
-      t.integer :seed
+      t.integer :current_comment_id
       t.timestamps
     end
   end
