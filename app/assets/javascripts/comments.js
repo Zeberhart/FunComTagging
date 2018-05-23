@@ -17,7 +17,7 @@ function expand(range) {
         return;
     }
 
-    while (range.toString()[0].match(/[^\s]/)) {
+    while (range.toString()[0].match(/[^\s]/) && range.startOffset > 0) {
         range.setStart(range.startContainer, range.startOffset - 1);   
     }
     range.setStart(range.startContainer, range.startOffset + 1);
