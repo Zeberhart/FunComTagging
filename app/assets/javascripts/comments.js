@@ -72,6 +72,7 @@ function test(){
 }
 
 $(document).on('turbolinks:load', function() {
+    document.getElementById("tag").value = document.getElementById("confirmation").innerHTML;
     $("#comment").on("mouseup", function(){
         mouseUp();
     });
