@@ -9,7 +9,11 @@ html{
 	color:white;
 	text-align:center;
 	width:50%;
-	margin:auto;
+	position: absolute;
+	left: 0;
+	top:5px;
+	right: 0;
+	margin: auto
 }
 
 .notice{
@@ -46,6 +50,7 @@ body{
 
 .content_item{
 	width:50%;
+	max-width:0;
 	vertical-align: top;
 	padding:10px;
 }
@@ -57,6 +62,8 @@ body{
 	height:90%;
 	width:100%;
 	overflow:scroll; 
+	overflow:scroll; 
+
 	white-space: pre-wrap;
 }
 
@@ -64,12 +71,12 @@ body{
 	width:100%;
 	background-color: #ffffff;
 	padding :10px;
-	border: 2px solid #ffd487;
+	border: 2px solid #a360d3;
     border-radius: 5px;
 	word-spacing: 3px;
 	font-family: "Arial";
 	font-size: 1.3em;
-	line-height:1.1;
+	line-height:1.3em;
 	height:70%;
 	overflow:scroll; 
 	overflow-x:scroll; 
@@ -77,16 +84,17 @@ body{
 }
 
 #comment::selection {
-  background: #ffd7a9; /* WebKit/Blink Browsers */
+  background: #e6b7ff; /* WebKit/Blink Browsers */
 }
 #comment::-moz-selection {
-  background: #fef080; /* Gecko Browsers */
+  background: #e6b7ff; /* Gecko Browsers */
 }
 
 #confirmation{
-	color: #EE7600;
+	color: #c360d3;
 	font-size: 1.3em;
 	min-height: 2.5em;
+	font-weight: bold;
 }
 
 #submit{

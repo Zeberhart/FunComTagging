@@ -34,7 +34,7 @@
                     
             %td.content_item
                 %h2 Comment
-                #comment &#8203;#{@comment.body.gsub('\n', "\n").gsub('\t', '').gsub('*', "")[2..-3].squeeze(" ")}
+                #comment=  "&#8203;".html_safe + @comment.body.gsub('\n', "\n").gsub('\t', '').gsub('*', "")[2..-3].squeeze(" ")
                 %br
                 You have selected:
                 #confirmation= @tag.body if @tag

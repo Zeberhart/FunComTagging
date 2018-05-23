@@ -44,6 +44,7 @@ function mouseUp() {
             if(anchor == focus && acceptable){
                 expand(selectionRange);
                 text = window.getSelection().toString();
+                text.replace("\n", "")
                 // if(text.split(" ").length > MAX_WORDS){
                 //     window.getSelection().removeAllRanges();
                 //     return false;
