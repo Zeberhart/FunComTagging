@@ -1,5 +1,5 @@
 
-var MAX_WORDS = 8;
+var MAX_WORDS = 12;
 
 function getSelected() {
   if(window.getSelection) { return window.getSelection(); }
@@ -23,7 +23,11 @@ function expand(range) {
     range.setStart(range.startContainer, range.startOffset + 1);
 
     while (range.toString()[range.toString().length - 1].match(/[^\s]/)) {
-        range.setEnd(range.endContainer, range.endOffset + 1);
+        try{
+            range.setEnd(range.endContainer, range.endOffset + 1);
+        }catch(err){
+            break;
+        }
     }
     range.setEnd(range.endContainer, range.endOffset - 1);
 }

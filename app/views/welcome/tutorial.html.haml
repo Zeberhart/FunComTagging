@@ -1,3 +1,181 @@
-%h1 Comment Tagging Project - Tutorial
-%br
-=link_to "Return to Tagging Page", Comment.find(@user.current_comment_id)
+#tutorial{:style => "width:95%; display: block; margin: auto;"}
+    %h1 Comment Tagging Project - Tutorial
+    %h2 Please read through before beginning. You may return to this page at any time.
+    %hr
+    %br
+    #stuff{:style => "box-sizing: border-box; width:100%; background-color: white !important; padding:10px 10%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.15), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius: 5px;"}
+        %h2 Introduction
+        %p Welcome to our comment tagging project! The purpose of this study is to extract the most relevant pieces of information from comments describing a diverse set of functions. All of these functions come from open-source Debian projects, and are written in C or C++. The comments associated with each function often provide a plethora of information about the functionality of the methods. Oftentimes, however, they contain more information than is necessary to gain a general, high-level understanding of the code.
+
+        %p In this study, we would like you to read through each comment and tag the short phrase that summarizes <em>what</em> the function does, as opposed to when, where, how, or why it is used. We have provided an interface that should make it simple to do just that. When you click "Return to Tagging Page", you should come to a page that looks like this:
+
+        %br
+        = image_tag  "screenshot.png", style: 'width:75%;  display: block; margin: auto;'
+        %br
+
+        %p On the right is the comment of interest, and on the left is the source code of function being described. To tag the relevant section of the comment, you simply highlight the desired comment text with your mouse. Try it below:
+
+        #commentW &#8203; Add the sign into the signlist. Find the right spot to do it though.
+        %br
+        #confirmationW
+
+        %p 
+            In this case, you would want to tag the phrase 
+            %span.confirmation "Add the sign into the signlist." 
+            as that is the section that succinctly describes <em>what</em> the function does. "Find the right spot to do it though." is a suggestion to the programmer of where to use it.
+
+        %p You will notice that the selection snaps to include only full words. Additionally, if the selection is longer that 12 words, it will narrow it down to include only the first 12. In some cases, you will find that <em>no part</em> of the comment contains information relevant to what the function does. In this case, simply don't tag anything. If you accidentally highlight something, you can click elsewhere in the comment box to untag it. 
+
+        %p In other cases, you will find that more than 12 contiguous words are needed to fully describe what the method does. In those cases, you may choose the best 12 words to tag, and then mark the "Multiple Tags?" checkbox.
+
+        =label_tag "split", "Multiple Tags?" do
+            =check_box_tag "split", true, (@tag.split if @tag)
+            Multiple Tags?
+
+        %br
+
+        %p Once you have tagged the comment in this manner, you can either hit the "Submit" button or press Enter on your keyboard to save your tag and continue to the next page. 
+
+        %br
+
+        %h2 Examples
+        %table.examples
+            %tr
+                %td
+                    .comment 
+                        &#8203; Tries to pop a value off the queue  Returns 1 if successful, &#8203;
+                %td 
+                    %p
+                        The phrase you would tag here is 
+                        %span.confirmation "Tries to pop a value off the queue".
+                        The fact that the functions returns 1 is irrelevant to the high-level functionality.
+            %tr
+                %td
+                    .comment 
+                        &#8203; If it has not already been allocated, allocate the UnpackedRecord   structure &#8203;
+                %td 
+                    %p  
+                        Even though the function only operates if some condition is met, the purpose of the function is to 
+                        %span.confirmation "allocate the UnpackedRecord structure",
+                        so we would tag that.
+
+            %tr
+                %td
+                    .comment
+                        &#8203;\brief Release fritzbox connection  
+                        \param nSock socket handle  
+                        \param nApplId registered application id
+                        \return error code (CapiNoError or CapiRegNotInstalled on error) &#8203;
+                %td 
+                    %p 
+                        The tag here is 
+                        %span.confirmation "Release fritzbox connection".
+                        The rest consists of implementation details.
+            %tr
+                %td
+                    .comment 
+                        &#8203;​ Clear all authentication information. &#8203;
+                %td 
+                    %p
+                        In this case, the comment is already very concise, and the entire phrase consists of information relevant to the functionality, so you would tag the entire thing: 
+                        %span.confirmation "Clear all authentication information."
+            %tr
+                %td
+                    .comment 
+                        &#8203;​ Create and start asynchronous DNS query for a single resource. &#8203;
+                %td 
+                    %p
+                        Again, the entire phrase is relevant and less than 12 words. If it were longer, you could leave off trailing phrases such as "for a single resource," but in this case you can tag the whole thing: 
+                        %span.confirmation "Create and start asynchronous DNS query for a single resource."
+            %tr
+                %td
+                    .comment 
+                        &#8203;  Same as file_isfile(), but takes into account symlinks. &#8203;
+                %td 
+                    %p
+                        This comment references another function, but gives no information as to the functionality of the function it is supposed to be describing. In this case, you would not tag anything and simply hit the submit button.
+            %tr
+                %td
+                    .comment 
+                        &#8203; @return 1=replaced , 2=not replaced , <=0 = error &#8203;
+                %td 
+                    %p
+                        Although this comment describes what the function returns, it does not describe what the function does. Clearly it has something to do with replacements, but no phrase in the comment makes it clear. Therefore, you would tag nothing.
+            %tr
+                %td
+                    .comment 
+                        &#8203;  Return possible_type struct for current segment type. &#8203;
+                %td 
+                    %p
+                        Like the previous example, this comment describes the return value. Unlike that example, this one also includes functionality information. It seems the purpose of this function is to construct and return a new item based on the current "segment type." You may want to read the function here to confirm, and if so, you would tag the entire phrase: 
+                        %span.confirmation "Return possible_type struct for current segment type."
+            %tr
+                %td
+                    .comment 
+                        &#8203;Willy Robison's contribution  HTM1735 from Humirel (www.humirel.com) hooked up like 
+                        everyone  else. The datasheet seems to suggest that the humidity  measurement isn't too 
+                        sensitive to VCC (VCC=5.0V +/- 0.25V).  The conversion formula is derived directly from the 
+                        datasheet  (page 2). VAD is assumed to be volts and H is relative  humidity in percent. 
+                        &#8203;
+                %td 
+                    %p 
+                        Allthough this comment is quite long and detailed, it does not describe any functionality. Therefore, you would not tag anything.
+
+            %tr
+                %td
+                    .comment 
+                        &#8203;\property QTableView::cornerButtonEnabled
+                        \\brief whether the button in the top-left corner is enabled
+
+                        If this property is true then button in the top-left corner
+                        of the table view is enabled. Clicking on this button will
+                        select all the cells in the table view.
+
+                        This property is true by default.​  \pro &#8203;
+                %td 
+                    %p 
+                        Although it might be tempting to go with the brief "whether the button in the top-left corner is enabled" or the verb phrase "select all the cells in the table view", that is not what this function does – by reading the source code, you can tell that this function is responsible for enabling the button that selects those cells. The most apt tag in this comment is then
+                        %span.confirmation "button in the top-left corner of the table view is enabled"
+            %tr
+                %td
+                    .comment 
+                        ​Internal function: _al_event_queue_push_event
+                        Event sources call this function when they have something to add to
+                        the queue. If a queue cannot accept the event, the event's
+                        refcount will not be incremented.
+                         
+                        If no event queues can accept the event, the event should be
+                        returned to the event source's list of recyclable events.​Intern
+                        
+                %td 
+                    %p 
+                        This is a very descriptive comment that communicates many of the details of the funciton, but as always, we are only concerned with the very basic information: WHAT does the function do? From this high-level, this comment is essentially just a push, and you would tag
+                        %span.confirmation "add to the queue".
+            %tr
+                %td
+                    .comment 
+                        &#8203;See "An O(ND) Difference Algorithm and its Variations", by Eugene Myers.  Basically considers a "box" (off1, off2, lim1, lim2) and scan from both  the forward diagonal starting from (off1, off2) and the backward diagonal  starting from (lim1, lim2). If the K values on the same diagonal crosses  returns the furthest point of reach. We might end up having to expensive  cases using this algorithm is full, so a little bit of heuristic is needed  to cut the search and to return a suboptimal point.
+                        &#8203;
+                %td 
+                    %p 
+                        There is a lot going on in this comment, and it might take more than one short tag to adequately describe it. We 
+                        %span.confirmation 'consider a "box",'
+                        %span.confirmation 'scan from both the forward diagonal[...] and the backward diagonal,' 
+                        and 
+                        %span.confirmation 'return the furthest point of the reach.' 
+                        None of those phrases quite describe the functionality on their own, but together they give a decent idea of the function's purpose. Therefore, you would likely choose to tag one of them and check the "Multiple Tags?" box.
+
+
+        %h2 Conclusion
+        %p As you can see, it is often very simple to glance at a comment and discern which part is relevant, if any part is at all! In some cases, if the comment is long or confusing, it will be helpful to skim through the function and try to determine broadly what it is doing. You don't need to be familiar with any of the specific details of the projects, just able to determine what is important.
+
+        %p <b>Don't get stuck on any one comment for too long!</b> If you feel that you can't make heads or tails of a function, simply highlight whatever makes the most sense and move on. Just do your best! If you ever realize you make a mistake, you can always go back to a previous page.
+
+        %p These tags will be used by software engineering researchers to better understand the role of documentation in computer science. Thank you very much for participating in this important study!
+
+        %h2{:style => "text-align:center; color: #a360d3;"}=link_to "Return to Tagging Page", Comment.find(@user.current_comment_id)
+        %br
+        %br
+    %br
+    %br
+    %br

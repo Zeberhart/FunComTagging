@@ -5,3 +5,82 @@ body{
 #informed_consent{
 	background-color: white;
 }
+
+p{
+	font-size:1.2em;
+	line-height:1.5em;
+}
+
+#commentW{
+	width:50%;
+	height: 250px;
+	display: block;
+	margin:auto;
+	background-color: #ffffff;
+	padding :10px;
+	border: 2px solid #a360d3;
+    border-radius: 5px;
+	word-spacing: 3px;
+	font-family: "Arial";
+	font-size: 1.3em;
+	line-height:1.3em;
+	overflow:scroll; 
+	overflow-x:scroll; 
+	white-space: pre-wrap;
+}
+
+#commentW::selection {
+  background: #e6b7ff; /* WebKit/Blink Browsers */
+}
+#commentW::-moz-selection {
+  background: #e6b7ff; /* Gecko Browsers */
+}
+
+.comment{
+	width:80%;
+	height: 190px;
+	background-color: #ffffff;
+	padding :10px;
+	border: 2px solid #a360d3;
+    border-radius: 5px;
+	word-spacing: 3px;
+	font-family: "Arial";
+	font-size: 1.3em;
+	line-height:1.3em;
+	overflow:scroll; 
+	overflow-x:scroll; 
+	white-space: pre-wrap;
+}
+
+.comment::selection {
+  background: #e6b7ff; /* WebKit/Blink Browsers */
+}
+.comment::-moz-selection {
+  background: #e6b7ff; /* Gecko Browsers */
+}
+
+.examples{
+	width:100%;
+	border-collapse: separate; 
+	border-spacing: 10px 20px;
+}
+
+td{
+	vertical-align: top;
+	width:50%;
+}
+
+#confirmationW{
+	color: #c360d3;
+	font-size: 1.3em;
+	min-height: 2.5em;
+	font-weight: bold;
+	width:50%;
+	margin:auto;
+	display: block;
+}
+
+.confirmation{
+	color: #c360d3;
+	font-weight: bold;
+}
