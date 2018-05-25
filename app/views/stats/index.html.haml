@@ -1,0 +1,6 @@
+%table{:style => "width:100%;border-collapse: separate; border-spacing: 10px 20px;"} 
+  -Tag.all.each do |tag|
+    - comment = Comment.find(tag.comment_id)
+    %tr{:style => "width:100%;"} 
+      %td{:style => "width:50%; max-width:0;"}= comment.body
+      %td{:style => "width:50%;max-width:0;"}= tag.body
