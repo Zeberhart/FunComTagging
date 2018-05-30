@@ -1,6 +1,13 @@
 %p#notice= notice
 
+-Tag.all.where(user_id: @user.id).each_with_index do |tag, index|
+	=index
+	%br
+	=tag.body
+	%br
+	=Comment.all.find(tag.comment_id).body
+	%br
+	%br
 
-= link_to 'Edit', edit_user_path(@user)
 \|
 = link_to 'Back', users_path
