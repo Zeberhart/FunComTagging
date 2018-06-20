@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get    '/tutorial',   to: 'welcome#tutorial'
 
   get    '/stats',   to: 'stats#index'
+  get    '/stats/all',   to: 'stats#all'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
